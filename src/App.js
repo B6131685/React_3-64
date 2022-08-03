@@ -16,6 +16,7 @@ import AboutPage from "./pages/AboutPage";
 import Navbar from "./components/Navbar";
 import Footerv2 from "./components/Footerv2";
 import ProductPage from './pages/ProductPage';
+import HospitalPage from "./pages/hospital/HospitalPage";
 import Detail from './pages/Detail'
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
         </Route>
         <Route path='/product'>
           <ProductPage></ProductPage>
+        </Route>
+        <Route path='/hospital'>
+          <HospitalPage></HospitalPage>
         </Route>
         <Route path='/detail/:id/title/:title'>
           <Detail></Detail>

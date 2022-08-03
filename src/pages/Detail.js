@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, useHistory} from "react-router-dom";
-import { Table, Spinner, Card, Row, Col, CardGroup, Button  } from "react-bootstrap";
+import { Table, Spinner, Card, Row, Col, CardGroup, Button, Badge } from "react-bootstrap";
 import axios from "axios";
 import { format } from "date-fns";
 import { BsEyeFill } from "react-icons/bs";
@@ -11,7 +11,7 @@ const Detail = () => {
   const [detail, setDetail] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
-  const cancelToken = React.useRef(null); //ไม่ขึ้นกับการ re-render หน้าใหม่ๆ
+  const cancelToken = React.useRef(); //ไม่ขึ้นกับการ re-render หน้าใหม่ๆ
 
   const getData = async (id) => {
     try {
@@ -19,7 +19,7 @@ const Detail = () => {
       const resp = await axios.get(
         "https://api.codingthailand.com/api/course/" + id,
         {
-          // cancelToken: cancelToken.current.token
+          // cancelToken: cancelToken.current.token,
         }
       );
       setDetail(resp.data.data);
@@ -32,7 +32,7 @@ const Detail = () => {
   };
 
   React.useEffect(() => {
-    // cancelToken.current = axios.CancelToken.source()
+    // cancelToken.current = axios.CancelToken.source();
 
     getData(id);
 
@@ -75,7 +75,10 @@ const Detail = () => {
                         <Card.Text>
                           <span>{item.ch_timetotal}</span>
                           <br/>
-                          <span>{item.ch_view}</span>
+                          {/* <span>{item.ch_view}</span> */}
+                          <Badge pill bg="success">
+                            {item.ch_view}
+                          </Badge>
                           <br/>
                           <span>{item.ch_dateadd}</span>
                         </Card.Text>

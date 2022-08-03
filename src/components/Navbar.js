@@ -1,8 +1,11 @@
 import React from "react";
 import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap";
 import { FiActivity } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+import { NavLink,useHistory } from "react-router-dom";
 function NavBar() {
+
+  const history = useHistory()
+
   return (
     <>
        <Navbar bg="light" expand="lg">
@@ -31,16 +34,14 @@ function NavBar() {
             </NavLink>
             
             <Nav.Link href="#link"><FiActivity color="red"/></Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown title="Workshop (Pagination + CRUD)" id="basic-nav-dropdown">
+              <NavDropdown.Item 
+                  onClick={()=>{
+                    history.replace('/hospital')
+                  }}  
+              >ข้อมูลสถานพยาบาล (Pagination)</NavDropdown.Item>    
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
+              <NavDropdown.Item >หมวดหมู่ข่าว (CRUD)</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Spinner } from "react-bootstrap";
+import { Table, Spinner, Badge } from "react-bootstrap";
 import axios from "axios";
 import { format } from "date-fns";
 import { BsEyeFill } from 'react-icons/bs'
@@ -33,8 +33,8 @@ function ProductPage() {
     
     getCourse();
 
-    // ทำตอน หน้านี้ถูกปิดลง
     return ()=>{
+      // ทำตอน หน้านี้ถูกปิดลง
         // console.log('Page are closed');
         // cancelToken.current.cancel()
     }
@@ -78,7 +78,11 @@ function ProductPage() {
                       <br />
                       {item.detail}
                     </td>
-                    <td>{item.view}</td>
+                    <td>
+                      <Badge pill bg="success">
+                          {item.view}
+                      </Badge>
+                      </td>
                     <td>{format(new Date(item.date), "dd MMM yyyy")}</td>
                     <td style={{ textAlign: "center" }}>
                       <img src={item.picture} width="110px" />
